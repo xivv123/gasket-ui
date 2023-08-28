@@ -1,0 +1,10 @@
+{
+  "version": "1.0.0",
+  "description": "gasket-ui组件库",
+  "keywords": [],
+  "author": "yanxi",
+  "license": "ISC",
+  "devDependencies": {
+    "turbo": "^1.7.3"
+  }
+}

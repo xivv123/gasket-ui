@@ -1,0 +1,13 @@
+{
+  "name": "gasket-ui-components",
+  "version": "1.0.0",
+  "description": "gasket-ui基础组件",
+  "main": "index.ts",
+  "keywords": [],
+  "author": "yanxi",
+  "license": "ISC",
+  "dependencies": {
+    "sass": "^1.58.0",
+    "vue": "^3.2.45"
+  }
+}

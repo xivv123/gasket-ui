@@ -2,7 +2,7 @@
   <div v-if="type === 'florid'"
     @mouseover="mouseEntered = true" 
     @mouseleave="mouseEntered = false" 
-    :class="mouseEntered ? 'bui-input-florid' : 'bui-input-florid-wrapper'"
+    :class="mouseEntered ? 'gk-input-florid' : 'gk-input-florid-wrapper'"
     class="inline-block"
   >
     <input 
@@ -89,7 +89,7 @@ const handleInput = () => {
   animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
 }
 
-.bui-input-florid-wrapper {
+.gk-input-florid-wrapper {
     position: relative;
     width: 156px; 
     height: 26px;  
@@ -98,7 +98,7 @@ const handleInput = () => {
     border-radius: 4px;
 }
 
-.bui-input-florid-hover-target {
+.gk-input-florid-hover-target {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -106,7 +106,7 @@ const handleInput = () => {
 }
 
 
-.bui-input-florid{
+.gk-input-florid{
     position: relative;
     width: 156px; 
     height: 26px; 
@@ -124,48 +124,48 @@ const handleInput = () => {
   outline: none;  /* 隐藏获得焦点时的边框 */
 }
 
-.bui-input-florid span{
+.gk-input-florid span{
     position: absolute; 
     z-index: 111;
     background:#fff;
 }
-.bui-input-florid .left{
+.gk-input-florid .left{
     left: -1px; 
     top: 0px; 
     width: 2px; 
     height: 26px; 
 }
-.bui-input-florid .top{ 
+.gk-input-florid .top{ 
     right: 1px; 
     top: -3px; 
     width: 156px;
     height: 4px;
 }
-.bui-input-florid .right{ 
+.gk-input-florid .right{ 
     right: -1px; 
     bottom: 0px;  
     width: 2px; 
     height: 27px;
 }
-.bui-input-florid .bottom{
+.gk-input-florid .bottom{
     left: 0px; 
     top: 25px; 
     width: 156px; 
     height: 2px;
 }
- .bui-input-florid:hover .bottom{
+ .gk-input-florid:hover .bottom{
     animation:animateBottom 0.2s linear 0s;
     animation-fill-mode:forwards;
 }
-.bui-input-florid:hover .left{
+.gk-input-florid:hover .left{
     animation:animateLeft 0.2s linear 0.2s;
     animation-fill-mode:forwards;
 }
-.bui-input-florid:hover .top{
+.gk-input-florid:hover .top{
     animation:animateTop 0.2s linear 0.4s;
     animation-fill-mode:forwards;
 }
-.bui-input-florid:hover .right{
+.gk-input-florid:hover .right{
     animation:animateRight 0.2s linear 0.6s;
     animation-fill-mode:forwards;
 }

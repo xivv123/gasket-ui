@@ -3,7 +3,7 @@ import BuiButton from './src/index.vue'
 
 const BuiButtonInstall: Plugin = {
   install(app: App) {
-    app.component('bui-button', BuiButton)
+    app.component('gk-button', BuiButton)
   }
 }
 

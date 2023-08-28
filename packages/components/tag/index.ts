@@ -3,7 +3,7 @@ import BuiTag from './src/index.vue'
 
 const BuiTagInstall: Plugin = {
   install(app: App) {
-    app.component('bui-tag', BuiTag)
+    app.component('gk-tag', BuiTag)
   }
 }
 

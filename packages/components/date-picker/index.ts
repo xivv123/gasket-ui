@@ -3,7 +3,7 @@ import BuiDatePicker from './src/index.vue'
 
 const BuiDatePickerInstall: Plugin = {
   install(app: App) {
-    app.component('bui-date-picker', BuiDatePicker)
+    app.component('gk-date-picker', BuiDatePicker)
   }
 }
 

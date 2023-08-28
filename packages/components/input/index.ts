@@ -3,7 +3,7 @@ import BuiInput from './src/index.vue'
 
 const BuiInputInstall: Plugin = {
   install(app: App) {
-    app.component('bui-input', BuiInput)
+    app.component('gk-input', BuiInput)
   }
 }
 

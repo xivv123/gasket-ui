@@ -1,44 +1,39 @@
-
-<script setup lang="ts">
-import { ref } from 'vue'
-import DatePicker from './DatePicker.vue'
-
-const selectedDate = ref('')
-const datePickerRef = ref()
-
-const focusDatePicker = () => {
-  datePickerRef.value?.focus()
-}
-</script>
-
 <template>
-  <div>
-    <gk-button>Default</gk-button>
-    <gk-button color="yellow">Primary</gk-button>
-    <gk-button type="primary" circle :round="true">Primary</gk-button>
-    <gk-button type="Warning">Success</gk-button>
-    <gk-button type="danger">Danger</gk-button>
-    <gk-button type="danger">Danger</gk-button>
-    <gk-button type="success" >Danger</gk-button>
-    <gk-button type="yellow" size="large">222</gk-button>
-    <gk-button type="Warning" size="small">222</gk-button>
-    <gk-button type="Warning" size="small">222</gk-button>
-    <gk-button type="yellow" plain :size="['200px', '300px']">222</gk-button>
-  </div>
-1
-  <gk-date-picker v-model="selectedDate" ref="datePickerRef" />
-  <gk-input v-model="selectedDate" color="blue" shake="true" textColor="red" ref="datePickerRef" />
-  <br />
-  <gk-input v-model="selectedDate"  color="red"  textColor="yellow" ref="datePickerRef" />
-  <br />
-
-  <gk-input v-model="selectedDate" color="yellow" ref="datePickerRef" />
-  <br />
-
-  <gk-input v-model="selectedDate" shake="true" type="florid" ref="datePickerRef" />
-  <gk-input v-model="selectedDate" shake="true" type="florid" ref="datePickerRef" />
-  <br />
-
+  <!-- <div style="height: 500px; width: 600px; border: 1px solid black;"> -->
+    <!-- 使用自定义右键菜单组件 -->
+    测试右键点击菜单
+    <gk-right-menu style="height: 500px; width: 600px; border: 1px solid black;" :menuItems="menuItems" @click="handleClick" />
+  <!-- </div> -->
 </template>
 
-<style scoped></style>
+<script>
+// import RightMenu from '@/components/right-menu/src/index.vue'
+
+export default {
+  data() {
+    return {
+      menuItems: [
+        {
+          text: "菜单项1",
+          action: () => console.log('菜单项1被点击')
+        },
+        {
+          text: "菜单项2",
+          action: () => console.log('菜单项2被点击')
+        },
+        {
+          text: "菜单项2222222",
+          action: () => console.log('菜单项2被点击')
+        },
+        // 添加更多菜单项...
+      ],
+    }
+  },
+  methods: {
+    handleClick(item) {
+      // 处理 click 事件
+      console.log('菜单项被点击', item)
+    },
+  },
+}
+</script>

@@ -1,6 +1,5 @@
 <template>
   <div @contextmenu.prevent="showMenu($event)">
-    <!-- 这是你的自定义菜单 -->
     <ul v-if="show" :style="{ top: `${menuPosition.y}px`, left: `${menuPosition.x}px` }" class="custom-menu">
       <li v-for="(item, index) in menuItems" :key="index" @click="handleMenuItemClick(item)" class="custom-menu-item">
        
@@ -14,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, withDefaults, defineProps, defineEmits } from 'vue'
+import { ref } from 'vue'
 
 // 定义 props
 const props = withDefaults(defineProps<{
@@ -35,7 +34,6 @@ const menuPosition = ref({ x: 0, y: 0 })
 // 显示菜单
 const showMenu = (event) => {
   console.log(event)
-  debugger
   menuPosition.value = { x: event.clientX, y: event.clientY }
   show.value = true
 }

@@ -14,6 +14,9 @@ importers:
 
   apps/vue3-admin:
     dependencies:
+      animejs:
+        specifier: ^3.2.1
+        version: 3.2.1
       element-plus:
         specifier: ^2.3.12
         version: 2.3.12(vue@3.2.47)
@@ -872,6 +875,10 @@ packages:
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue
+    dev: false
+
+  /animejs@3.2.1:
+    resolution: {integrity: sha512-sWno3ugFryK5nhiDm/2BKeFCpZv7vzerWUcUPyAZLDhMek3+S/p418ldZJbJXo5ZUOpfm2kP2XRO4NJcULMy9A==}
     dev: false
 
   /ansi-regex@6.0.1:

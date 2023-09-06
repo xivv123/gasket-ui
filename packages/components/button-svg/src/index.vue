@@ -16,7 +16,7 @@
 import { ref } from 'vue'
 import anime from 'animejs'
 
-const state = ref({ value: 0.00001 })
+const state = ref({ value: 0.0001 })
 let animation = null
 
 const startAnimation = () => {
@@ -28,21 +28,22 @@ const startAnimation = () => {
 
   animation
     .add({
-      value: 0.3,
-      duration: 20,
+      value: 0.8,
+      duration: 50,
     })
     .add({
       value: 0,
-      duration: 20,
+      duration: 50,
     })
 }
 
 const stopAnimation = () => {
   if (animation) {
     animation.pause();
-    state.value = { value: 0.00001 };
+    state.value = { value: 0.0001 };
   }
 }
+
 </script>
 
 <style scoped>
@@ -54,5 +55,6 @@ const stopAnimation = () => {
   border: none;
   cursor: pointer;
   transition: filter 0.3s;
+  border-radius: 4px;
 }
 </style>

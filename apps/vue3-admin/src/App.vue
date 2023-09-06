@@ -1,44 +1,43 @@
 <template>
-    <button :style="{ filter: 'url(#filter)' }" class="btn" @mouseover="startAnimation" @mouseleave="stopAnimation">
+  <gk-svgdefs-fault ref="wo" >
+    <button :style="{ filter: 'url(#filter)' }" class="btn" >
       <span>Click Me</span>
     </button>
-  
-    <SvgFilter ref="wo"/>
-  </template>
+    <div :style="{ filter: 'url(#filter)' }" style="background-color: black; height: 100px; width: 100px;"></div>
+  </gk-svgdefs-fault>
+</template>
   
   <script setup lang="ts">
-  import { ref } from 'vue'
-  import anime from 'animejs'
-  import SvgFilter, { state } from './SvgFilter.vue'
+  // import { ref } from 'vue'
+  // import anime from 'animejs'
   
-  let animation = null
-  let wo = ref(null)
-
-  console.log(wo)
-  const startAnimation = () => {
-    animation = anime.timeline({
-      targets: state.value,
-      easing: 'easeInOutQuad',
-      loop: false
-    })
+  // let animation: any = null
+  // const state = ref({ value: 0.0001 })
   
-    animation
-      .add({
-        value: 0.8,
-        duration: 50,
-      })
-      .add({
-        value: 0,
-        duration: 50,
-      })
-  }
+  // const startAnimation = () => {
+  //   animation = anime.timeline({ 
+  //     targets: state.value,
+  //     easing: 'easeInOutQuad',
+  //     loop: false
+  //   })
   
-  const stopAnimation = () => {
-    if (animation) {
-      animation.pause();
-      state.value = { value: 0.0001 };
-    }
-  }
+  //   animation
+  //     .add({
+  //       value: 0.8,
+  //       duration: 50,
+  //     })
+  //     .add({
+  //       value: 0,
+  //       duration: 50,
+  //     })
+  // }
+  
+  // const stopAnimation = () => {
+  //   if (animation) {
+  //     animation.pause();
+  //     state.value = { value: 0.0001 };
+  //   }
+  // }
   </script>
   
   <style scoped>

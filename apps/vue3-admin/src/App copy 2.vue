@@ -1,30 +1,24 @@
-<template> 
+<template>
+<h1>Hover the drop to create waves</h1>
 <div class="container">
-  <!-- <div style="height:  200px; width: 100px;"> -->
-
     <div class="svg-box">
         <svg version="1.1" id="Calque_1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 80 80" enable-background="new 0 0 80 80" xml:space="preserve">
-            <!-- <circle fill="#0194C7" cx="40" cy="40" r="40" /> -->
-            <rect fill="red" x="10" y="10" width="180" height="30" />
-            <text x="20" y="30" fill="white">我是一个按钮</text>
+            <circle fill="#0194C7" cx="40" cy="40" r="40" />
             <g>
-              <!-- <span style="color: aliceblue;">asdasd</span> -->
-              <!-- <path fill="#FFFFFF" d="M40,13.9c1,1.3,1.9,2.5,2.8,3.7c3,4.1,5.7,8.3,8.1,12.7c2,3.6,3.8,7.3,5,11.3c0.6,1.9,1.1,3.8,1.2,5.8
+              <path fill="#FFFFFF" d="M40,13.9c1,1.3,1.9,2.5,2.8,3.7c3,4.1,5.7,8.3,8.1,12.7c2,3.6,3.8,7.3,5,11.3c0.6,1.9,1.1,3.8,1.2,5.8
                 c0.4,4.7-1,9-4,12.6c-2.8,3.3-6.4,5.4-10.8,5.9c-6.8,0.8-12.3-1.6-16.4-7.1c-1.8-2.4-2.8-5.2-3.1-8.2c-0.2-2.3,0-4.5,0.5-6.7
                 c0.8-3.4,2.1-6.6,3.7-9.7c3.3-6.7,7.4-13,11.9-19C39.3,14.8,39.6,14.4,40,13.9z M32.3,34.5C32.3,34.5,32.3,34.5,32.3,34.5
                 c-0.1,0.1-0.1,0.1-0.2,0.2c-1.4,2.6-2.7,5.4-3.5,8.2c-0.5,1.8-1,3.6-1,5.4c0,2.6,0.8,5,2.1,7.3c0.8,1.3,1.9,2.2,3.4,2.6
                 c1.4,0.4,2.7-0.1,3.4-1.2c0.3-0.5,0.4-0.9,0.3-1.5c-0.1-0.6-0.4-1.1-0.8-1.6c-1.4-1.8-2.6-3.8-3.4-6c-1.4-3.8-1.4-7.7-0.7-11.6
                 C32,35.7,32.1,35.1,32.3,34.5z" 
-              /> -->
+              />
             </g>
         </svg>
-    <!-- </div> -->
-    <!-- <div class="circle delay1"></div> -->
+    </div>
+    <div class="circle delay1"></div>
     <!-- <div class="circle delay2"></div>
     <div class="circle delay3"></div>
     <div class="circle delay4"></div> -->
-    
-  </div>
 </div>
 </template>
 

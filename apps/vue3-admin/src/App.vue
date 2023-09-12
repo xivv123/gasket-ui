@@ -1,121 +1,100 @@
 <template>
-  <div class="upload-container">
-    <input type="file" id="file" @change="handleFileUpload" multiple hidden />
-    <label for="file" class="upload-button">
-      <i class="el-icon-upload"></i>
-      <span>点击上传</span>
-    </label>
-    <button @click="uploadFiles" class="upload-button" v-if="files.length">
-      <i class="el-icon-upload"></i>
-      <span>开始上传</span>
-    </button>
-    <table v-if="files.length">
-      <thead>
-        <tr>
-          <th>文件名称</th>
-          <th>文件大小</th>
-          <th>文件类型</th>
-          <th>预览</th>
-          <th>操作</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="(file, index) in files" :key="index">
-          <td>{{ file.name }}</td>
-          <td>{{ (file.size / 1024 / 1024).toFixed(2) }} MB</td>
-          <td>{{ file.name.split('.').pop() }}</td>
-          <td>
-            <img :src="file.url" v-if="file.url" class="preview" />
-          </td>
-          <td>
-            <button @click="deleteFile(index)">删除</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="container">
+    <header class="box1">
+      <div class="logo ">Logo</div>
+      <div class="login">登录</div>
+    </header>
+    <main >
+      <div class="carousel ">轮播图</div>
+      <div class="cards">
+        <div class="card box2" v-for="i in 6" :key="i">卡片 {{ i }}</div>
+      </div>
+    </main>
+    <footer class="box3">底部</footer>
   </div>
+  <Guide :guideData="guideData" />
+
 </template>
-
 <script setup lang="ts">
-import { ref } from 'vue';
+import Guide from './Guide.vue';
 
-const files = ref<Array<{ name: string; size: number; type: string; url: string }>>([]);
-const chunkSize = 1024 * 1024; // 分段大小，这里为1MB
-
-const handleFileUpload = (event: any) => {
-  for (const file of event.target.files) {
-    files.value.push({
-      name: file.name,
-      size: file.size,
-      type: file.type,
-      url: URL.createObjectURL(file),
-    });
+const guideData = [
+  {
+    title: '引导1',
+    text: '这个是头部区域',
+    domElement: '.box1',
+    button: [
+      {
+        text: '下一步',
+        action: 'next'
+      }
+    ]
+  },
+  {
+    title: '引导2',
+    text: '这个是主体区域',
+    domElement: '.box2',
+    button: [
+    {
+        text: '上一步',
+        action: 'back'
+      },
+      {
+        text: '下一步',
+        action: 'next'
+      }
+    ]
+  },
+  {
+    title: '引导3',
+    text: '这个是底部区域',
+    domElement: '.box3',
+    button: [
+      {
+        text: '上一步',
+        action: 'back'
+      }
+    ]
   }
-};
-
-const uploadFiles = async () => {
-  for (const file of files.value) {
-    const totalChunks = Math.ceil(file.size / chunkSize);
-    for (let i = 0; i < totalChunks; i++) {
-      const start = i * chunkSize;
-      const end = Math.min(file.size, start + chunkSize);
-      const chunk = file.slice(start, end);
-
-      const formData = new FormData();
-      formData.append('file', chunk);
-      formData.append('filename', file.name);
-      formData.append('chunkIndex', i.toString());
-      formData.append('totalChunks', totalChunks.toString());
-
-      // 这里的 '/upload' 是你的上传接口，需要替换为实际的接口
-      await fetch('/upload', {
-        method: 'POST',
-        body: formData,
-      });
-    }
-  }
-};
-
-const deleteFile = (index: number) => {
-  files.value.splice(index, 1);
-};
+  // 添加更多步骤...
+];
 </script>
 
 <style scoped>
-.upload-container {
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
 }
 
-.upload-button {
+header {
   display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 20px;
-  background-color: #409eff;
-  color: white;
-  border-radius: 4px;
-  cursor: pointer;
+  justify-content: space-between;
+  width: 100%;
 }
 
-table {
-  margin-top: 20px;
-  border-collapse: collapse;
+.carousel {
+  width: 100%;
+  height: 200px;
+  background-color: #eee;
 }
 
-th, td {
-  border: 1px solid #ddd;
-  padding: 8px;
+.cards {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
 
-th {
-  background-color: #f2f2f2;
+.card {
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+  background-color: #ddd;
 }
 
-.preview {
-  max-width: 100px;
-  max-height: 100px;
+footer {
+  width: 100%;
+  height: 50px;
+  background-color: #ccc;
 }
 </style>

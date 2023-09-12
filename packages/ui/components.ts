@@ -1,5 +1,6 @@
 import ButtonInstall from 'gasket-ui-components/tag'
 import TagInstall from 'gasket-ui-components/button'
+import TableInstall from 'gasket-ui-components/table'
 import BuiDatePickerInstall from 'gasket-ui-components/date-picker'
 import BuiInputInstall from 'gasket-ui-components/input'
 import RightMenuInstall from 'gasket-ui-components/right-menu'
@@ -13,5 +14,6 @@ export default [
     BuiDatePickerInstall, 
     BuiInputInstall, 
     RightMenuInstall,
-    GkSvgDefsFaultInstall
+    GkSvgDefsFaultInstall,
+    TableInstall
 ] as Plugin[]

@@ -1,5 +1,6 @@
 
 import { BuiButton } from 'gasket-ui-components/button'
+import { GkTable } from 'gasket-ui-components/table'
 import { BuiTag } from 'gasket-ui-components/tag'
 import { BuiInput } from 'gasket-ui-components/input'
 import { BuiDatePicker } from 'gasket-ui-components/date-picker'
@@ -18,4 +19,4 @@ const Installer = {
 }
 
 export default Installer
-export { BuiButton, BuiTag, BuiInput, BuiDatePicker, rightMenu, GkSvgDefsFault }
+export { BuiButton, BuiTag, BuiInput, BuiDatePicker, rightMenu, GkSvgDefsFault, GkTable }

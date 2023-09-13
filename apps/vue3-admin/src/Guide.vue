@@ -1,11 +1,17 @@
 <template>
   <div class="guide" v-if="currentStep">
     <div class="mask" :style="maskStyle"></div>
-    <Bubble :position="{ x: bubbleStyle.left, y: bubbleStyle.top }" :shadow="bubbleStyle.boxShadow">
+    <!-- <Bubble :position="{ x: bubbleStyle.left, y: bubbleStyle.top }" :shadow="bubbleStyle.boxShadow"> -->
+      <Bubble 
+        :position="{ x: bubbleStyle.left, y: bubbleStyle.top }" 
+        :shadow="bubbleStyle.boxShadow" 
+        :arrowDirection="currentStep.direction" 
+        :arrowPositionLeft="currentStep.left"
+        :arrowPositionTop="currentStep.top"
+      >
       <h1>{{ currentStep.title }}</h1>
       <p v-html="currentStep.text"></p>
       <button v-for="btn in currentStep.button" :key="btn.text" @click="handleAction(btn.action)">{{ btn.text }}</button>
-      <button v-if="currentStepIndex.value > 0" @click="handleAction('back')">上一步</button>
       <button @click="handleAction('complete')">结束引导</button>
     </Bubble>
   </div>
@@ -21,7 +27,8 @@ interface Position {
 }
 
 let props = defineProps({
-  guideData: Array
+  guideData: Array,
+  direction: String
 });
 
 let guideData = props.guideData;
@@ -66,10 +73,11 @@ function updateStyles() {
       boxSizing: 'border-box'
     };
     bubbleStyle.value = {
-      left: `${rect.left}px`,
-      top: `${rect.bottom}px`,
+      left: rect.left,
+      top: rect.bottom,
       boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)'
     };
+    console.log(bubbleStyle.value)
   }
 }
 

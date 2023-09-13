@@ -1,6 +1,9 @@
 <template>
   <div class="guide" v-if="currentStep">
-    <div class="mask" :style="maskStyle"></div>
+    <div class="mask" :style="maskStyle.top"></div>
+    <div class="mask" :style="maskStyle.right"></div>
+    <div class="mask" :style="maskStyle.bottom"></div>
+    <div class="mask" :style="maskStyle.left"></div>
     <div class="bubble" :style="bubbleStyle">
       <h1>{{ currentStep.title }}</h1>
       <p v-html="currentStep.text"></p>
@@ -21,7 +24,12 @@ const props = defineProps({
 let currentStepIndex = ref(0);
 let currentStep = ref(props.guideData[currentStepIndex.value]);
 
-let maskStyle = ref({});
+let maskStyle = ref({
+  top: {},
+  right: {},
+  bottom: {},
+  left: {}
+});
 let bubbleStyle = ref({});
 
 onMounted(() => {
@@ -43,8 +51,30 @@ function updateStyles() {
   if (element) {
     const rect = element.getBoundingClientRect();
     maskStyle.value = {
-      mask: `url(#mask)`,
-      maskSize: 'cover'
+      top: {
+        top: '0',
+        left: '0',
+        right: '0',
+        height: `${rect.top}px`
+      },
+      right: {
+        top: '0',
+        left: `${rect.right}px`,
+        bottom: '0',
+        right: '0'
+      },
+      bottom: {
+        top: `${rect.bottom}px`,
+        left: '0',
+        right: '0',
+        bottom: '0'
+      },
+      left: {
+        top: '0',
+        left: '0',
+        right: `${rect.left}px`,
+        bottom: '0'
+      }
     };
     bubbleStyle.value = {
       top: `${rect.bottom + 10}px`,
@@ -52,7 +82,6 @@ function updateStyles() {
     };
   }
 }
-
 
 function handleAction(action) {
   switch (action) {
@@ -87,8 +116,6 @@ function handleAction(action) {
   position: fixed;
   background: rgba(0, 0, 0, 0.5);
   pointer-events: auto;
-  width: 100%;
-  height: 100%;
 }
 
 .bubble {

@@ -23,6 +23,8 @@ const guideData = [
     title: '引导1',
     text: '这个是头部区域',
     domElement: '.box1',
+    direction: 'left', // 箭头的位置指向
+    top: '15',
     button: [
       {
         text: '下一步',
@@ -34,6 +36,8 @@ const guideData = [
     title: '引导2',
     text: '这个是主体区域',
     domElement: '.box2',
+    direction: 'down', // 箭头的位置指向
+    left: '20',
     button: [
     {
         text: '上一步',

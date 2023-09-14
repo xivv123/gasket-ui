@@ -4,29 +4,20 @@
       <div class="logo ">Logo</div>
       <div class="login">登录</div>
     </header>
-    <div class="carousel " style="width: 500px;">轮播图</div>
-    
     <main >
+      <div class="carousel ">轮播图</div>
       <div class="cards">
         <div class="card box2" v-for="i in 6" :key="i">卡片 {{ i }}</div>
       </div>
     </main>
     <footer class="box3">底部</footer>
   </div>
-  <Bubble
-    targetSelector=".carousel"
-    placement="left"
-  >
+  <!-- <Guide :guideData="guideData" /> -->
   
-  
-  啊实打实啊实打实啊实打实啊实打实啊实打实
-  
-  
-  </Bubble>
 
 </template>
 <script setup lang="ts">
-import Bubble from './Bubble.vue';
+import Guide from './Guide.vue';
 
 const guideData = [
   {

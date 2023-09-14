@@ -3,11 +3,12 @@
     <div class="mask" :style="maskStyle"></div>
     <!-- <Bubble :position="{ x: bubbleStyle.left, y: bubbleStyle.top }" :shadow="bubbleStyle.boxShadow"> -->
       <Bubble 
-        :position="{ x: bubbleStyle.left, y: bubbleStyle.top }" 
         :shadow="bubbleStyle.boxShadow" 
         :arrowDirection="currentStep.direction" 
         :arrowPositionLeft="currentStep.left"
         :arrowPositionTop="currentStep.top"
+        :targetSelector="currentStep.domElement"
+        :placement="currentStep.placement"
       >
       <h1>{{ currentStep.title }}</h1>
       <p v-html="currentStep.text"></p>

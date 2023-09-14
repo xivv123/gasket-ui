@@ -1,36 +1,26 @@
 <template>
-  <div class="bubble-container" :style="{ left: `${position.x}px`, top: `${position.y}px`, boxShadow: shadow }">
+  <div class="bubble-container" ref="bubbleElement" :style="popperStyles" :class="{ show: showPopper }">
     <div class="bubble-content">
       <slot></slot>
     </div>
-    <div class="bubble-arrow" :class="arrowDirection" :style="arrowPosition"></div>
+    <div class="bubble-arrow" ref="arrowElement" :class="arrowDirection" :style="arrowStyles"></div>
   </div>
 </template>
 
-<!-- 气泡组件 -->
 <script setup lang="ts">
-import { defineProps, computed, ref, watch } from 'vue';
-
-interface Position {
-  x: number;
-  y: number;
-}
+import { defineProps, ref, onMounted, onUnmounted, watch, computed } from 'vue';
+import { createPopper } from '@popperjs/core';
 
 let props = defineProps({
-  position: {
-    type: Object as () => Position,
-    required: true,
-  },
-  shadow: {
+  targetSelector: String,
+  placement: {
     type: String,
-    default: '0 2px 8px rgba(0, 0, 0, 0.1)',
+    default: 'top',
   },
   arrowDirection: {
     type: String,
-    default: 'up',
+    default: 'top',
   },
-  // 如果箭头方向是上和下，那么只能调整 left
-  // 如果箭头方向是左和右，那么只能调整 top
   arrowPositionLeft: {
     type: Number,
     default: '50',
@@ -38,6 +28,59 @@ let props = defineProps({
   arrowPositionTop: {
     type: Number,
     default: '50',
+  },
+});
+
+let bubbleElement = ref<HTMLElement | null>(null);
+let arrowElement = ref<HTMLElement | null>(null);
+let popperInstance = null;
+let showPopper = false;
+
+let popperStyles = ref({});
+let arrowStyles = ref({});
+
+onMounted(() => {
+  const targetElement = document.querySelector(props.targetSelector);
+  if (bubbleElement.value && targetElement) {
+    popperInstance = createPopper(targetElement, bubbleElement.value, {
+      placement: props.placement,
+      modifiers: [
+        { name: 'arrow', options: { element: arrowElement.value, padding: 10 } }, // padding is the distance from the edges of the popper
+        { name: 'offset', options: { offset: [0, 10] } },
+      ],
+    });
+
+    popperStyles.value = popperInstance.state.styles.popper;
+    arrowStyles.value = popperInstance.state.styles.arrow;
+    showPopper = true;
+  }
+});
+
+onUnmounted(() => {
+  if (popperInstance) {
+    popperInstance.destroy();
+    popperInstance = null;
+  }
+});
+
+watch(() => props.targetSelector, () => {
+  if (popperInstance) {
+    popperInstance.update();
+  }
+});
+
+let arrowDirection = computed(() => {
+  switch (props.placement) {
+    case 'top':
+      return 'bottom';
+    case 'bottom':
+      return 'top';
+    case 'left':
+      return 'right';
+    case 'right':
+      return 'left';
+    default:
+      return props.arrowDirection;
   }
 });
 
@@ -53,20 +96,6 @@ let arrowPositionTop = computed(() => {
   return props.arrowPositionTop;
 });
 
-let arrowPosition = computed(() => {
-  switch (props.arrowDirection) {
-    case 'up':
-      return { bottom: '96.5%', left: arrowPositionLeft.value + '%', transform: 'translateX(-50%) rotate(45deg)', borderLeft: '1px solid #ddd', borderTop: '1px solid #ddd' };
-    case 'down':
-      return { top: '96.5%', left: arrowPositionLeft.value + '%', transform: 'translateX(-50%) rotate(45deg)', borderRight: '1px solid #ddd', borderBottom: '1px solid #ddd' };
-    case 'left':
-      return { right: '96%', top: arrowPositionTop.value + '%', transform: 'translateY(-50%) rotate(45deg)', borderBottom: '1px solid #ddd', borderLeft: '1px solid #ddd' };
-    case 'right':
-      return { left: '96%', top: arrowPositionTop.value + '%', transform: 'translateY(-50%) rotate(45deg)', borderTop: '1px solid #ddd', borderRight: '1px solid #ddd' };
-    default:
-      return {};
-  }
-});
 </script>
 
 <style scoped>
@@ -80,6 +109,12 @@ let arrowPosition = computed(() => {
   border: 1px solid #ddd;
   border-radius: 5px;
   margin: 15px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.bubble-container.show {
+  opacity: 1;
 }
 
 .bubble-arrow {

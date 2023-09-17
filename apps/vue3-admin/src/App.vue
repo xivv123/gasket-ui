@@ -16,12 +16,8 @@
   <Bubble
     targetSelector=".carousel"
     placement="left"
+    style="margin-left: 100px;"
   >
-  
-  
-  啊实打实啊实打实啊实打实啊实打实啊实打实
-  
-  
   </Bubble>
 
 </template>

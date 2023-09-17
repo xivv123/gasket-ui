@@ -1,59 +1,35 @@
 <template>
-  <div class="bubble-container" ref="bubbleElement" :style="popperStyles" :class="{ show: showPopper }">
-    <div class="bubble-content">
-      <slot></slot>
+  <div>
+    <button class="toggle-button" ref="button" @click="showPopper = !showPopper">Toggle Popper</button>
+    <div class="popper-content" ref="popper" v-show="showPopper">
+      Hello Popper!
+      <div class="popper-arrow" ref="arrow"></div>
     </div>
-    <div class="bubble-arrow" ref="arrowElement" :class="arrowDirection" :style="arrowStyles"></div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { defineProps, ref, onMounted, onUnmounted, watch, computed } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 import { createPopper } from '@popperjs/core';
 
-let props = defineProps({
-  targetSelector: String,
-  placement: {
-    type: String,
-    default: 'top',
-  },
-  arrowDirection: {
-    type: String,
-    default: 'top',
-  },
-  arrowPositionLeft: {
-    type: Number,
-    default: '50',
-  },
-  arrowPositionTop: {
-    type: Number,
-    default: '50',
-  },
-});
-
-let bubbleElement = ref<HTMLElement | null>(null);
-let arrowElement = ref<HTMLElement | null>(null);
+let showPopper = ref(false);
+let button = ref(null);
+let popper = ref(null);
+let arrow = ref(null);
 let popperInstance = null;
-let showPopper = false;
-
-let popperStyles = ref({});
-let arrowStyles = ref({});
 
 onMounted(() => {
-  const targetElement = document.querySelector(props.targetSelector);
-  if (bubbleElement.value && targetElement) {
-    popperInstance = createPopper(targetElement, bubbleElement.value, {
-      placement: props.placement,
-      modifiers: [
-        { name: 'arrow', options: { element: arrowElement.value, padding: 10 } }, // padding is the distance from the edges of the popper
-        { name: 'offset', options: { offset: [0, 10] } },
-      ],
-    });
-
-    popperStyles.value = popperInstance.state.styles.popper;
-    arrowStyles.value = popperInstance.state.styles.arrow;
-    showPopper = true;
-  }
+  popperInstance = createPopper(button.value, popper.value, {
+    placement: 'bottom',
+    modifiers: [
+      {
+        name: 'arrow',
+        options: {
+          element: arrow.value,
+        },
+      },
+    ],
+  });
 });
 
 onUnmounted(() => {
@@ -62,65 +38,165 @@ onUnmounted(() => {
     popperInstance = null;
   }
 });
-
-watch(() => props.targetSelector, () => {
-  if (popperInstance) {
-    popperInstance.update();
-  }
-});
-
-let arrowDirection = computed(() => {
-  switch (props.placement) {
-    case 'top':
-      return 'bottom';
-    case 'bottom':
-      return 'top';
-    case 'left':
-      return 'right';
-    case 'right':
-      return 'left';
-    default:
-      return props.arrowDirection;
-  }
-});
-
-let arrowPositionLeft = computed(() => {
-  if (props.arrowPositionLeft < 10) return 10;
-  if (props.arrowPositionLeft > 90) return 90;
-  return props.arrowPositionLeft;
-});
-
-let arrowPositionTop = computed(() => {
-  if (props.arrowPositionTop < 10) return 10;
-  if (props.arrowPositionTop > 90) return 90;
-  return props.arrowPositionTop;
-});
-
 </script>
 
-<style scoped>
-.bubble-container {
-  position: absolute;
-  z-index: 1000;
-  width: max-content;
-  max-width: 200px;
-  padding: 10px;
+<style scoped lang="scss">
+.toggle-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #007BFF;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.3s ease;
+}
+
+.toggle-button:hover {
+  background-color: #0056b3;
+}
+
+.popper-content {
+  padding: 20px;
   background-color: #fff;
   border: 1px solid #ddd;
-  border-radius: 5px;
-  margin: 15px;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.bubble-container.show {
-  opacity: 1;
-}
-
-.bubble-arrow {
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  width: 200px;
+  z-index: 100;
   position: absolute;
-  width: 12px;
-  height: 12px;
+  word-wrap: break-word;
+  visibility: visible;
+}
+
+.popper-arrow {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  bottom: -5px;
+  z-index: -1;
+}
+
+.popper-arrow::before {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  z-index: -1;
   background-color: #fff;
+  transform: rotate(45deg);
+  box-sizing: border-box;
+  border: 1px solid #dcdfe6;
+  // background: #ffffff;
+  right: 0;
+}
+.popper {
+  position: absolute;
+  border-radius: var(--popper-border-radius);
+  padding: 5px 11px;
+  z-index: 2000;
+  font-size: 12px;
+  line-height: 20px;
+  min-width: 10px;
+  word-wrap: break-word;
+  visibility: visible;
+}
+
+.popper.dark {
+  color: var(--bg-color);
+  background: var(--text-color-primary);
+  border: 1px solid var(--text-color-primary);
+}
+
+.popper.dark .popper-arrow::before {
+  border: 1px solid var(--text-color-primary);
+  background: var(--text-color-primary);
+  right: 0;
+}
+
+.popper.light {
+  background: var(--bg-color-overlay);
+  border: 1px solid var(--border-color-light);
+}
+
+.popper.light .popper-arrow::before {
+  border: 1px solid var(--border-color-light);
+  background: var(--bg-color-overlay);
+  right: 0;
+}
+
+.popper.pure {
+  padding: 0;
+}
+
+.popper-arrow {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  z-index: -1;
+}
+
+// .popper-arrow::before {
+//   position: absolute;
+//   width: 10px;
+//   height: 10px;
+//   z-index: -1;
+//   content: ' ';
+//   transform: rotate(45deg);
+//   background: var(--text-color-primary);
+//   box-sizing: border-box;
+// }
+
+.popper[data-popper-placement^='top'] > .popper-arrow {
+  bottom: -5px;
+}
+
+.popper[data-popper-placement^='top'] > .popper-arrow::before {
+  border-bottom-right-radius: 2px;
+}
+
+.popper[data-popper-placement^='bottom'] > .popper-arrow {
+  top: -5px;
+}
+
+.popper[data-popper-placement^='bottom'] > .popper-arrow::before {
+  border-top-left-radius: 2px;
+}
+
+.popper[data-popper-placement^='left'] > .popper-arrow {
+  right: -5px;
+}
+
+.popper[data-popper-placement^='left'] > .popper-arrow::before {
+  border-top-right-radius: 2px;
+}
+
+.popper[data-popper-placement^='right'] > .popper-arrow {
+  left: -5px;
+}
+
+.popper[data-popper-placement^='right'] > .popper-arrow::before {
+  border-bottom-left-radius: 2px;
+}
+
+.popper[data-popper-placement^='top'] .popper-arrow::before {
+  border-top-color: transparent !important;
+  border-left-color: transparent !important;
+}
+
+.popper[data-popper-placement^='bottom'] .popper-arrow::before {
+  border-bottom-color: transparent !important;
+  border-right-color: transparent !important;
+}
+
+.popper[data-popper-placement^='left'] .popper-arrow::before {
+  border-bottom-color: transparent !important;
+  border-left-color: transparent !important;
+}
+
+.popper[data-popper-placement^='right'] .popper-arrow::before {
+  border-top-color: transparent !important;
+  border-right-color: transparent !important;
 }
 </style>

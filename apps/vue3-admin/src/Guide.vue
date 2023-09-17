@@ -1,108 +1,81 @@
 <template>
-  <div class="guide" v-if="currentStep">
-    <div class="mask" :style="maskStyle"></div>
-    <!-- <Bubble :position="{ x: bubbleStyle.left, y: bubbleStyle.top }" :shadow="bubbleStyle.boxShadow"> -->
-      <Bubble 
-        :shadow="bubbleStyle.boxShadow" 
-        :arrowDirection="currentStep.direction" 
-        :arrowPositionLeft="currentStep.left"
-        :arrowPositionTop="currentStep.top"
-        :targetSelector="currentStep.domElement"
-        :placement="currentStep.placement"
-      >
-      <h1>{{ currentStep.title }}</h1>
-      <p v-html="currentStep.text"></p>
-      <button v-for="btn in currentStep.button" :key="btn.text" @click="handleAction(btn.action)">{{ btn.text }}</button>
-      <button @click="handleAction('complete')">结束引导</button>
-    </Bubble>
+  <div>
+    <button class="toggle-button" ref="button" @click="showPopper = !showPopper">Toggle Popper</button>
+    <div class="popper-content" ref="popper" v-show="showPopper">
+      Hello Popper!
+      <div class="popper-arrow" ref="arrow"></div>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, watch, onUnmounted,  } from 'vue';
-import Bubble from './Bubble.vue';
+import { ref, onMounted, onUnmounted } from 'vue';
+import { createPopper } from '@popperjs/core';
 
-interface Position {
-  x: number;
-  y: number;
-}
-
-let props = defineProps({
-  guideData: Array,
-  direction: String
-});
-
-let guideData = props.guideData;
-let currentStepIndex = ref(0);
-let currentStep = ref(guideData[currentStepIndex.value]);
-
-let maskStyle = ref({});
-let bubbleStyle = ref({
-  left: '0px',
-  top: '0px',
-  boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)'
-});
-let highlightStyle = ref({});
+let showPopper = ref(false);
+let button = ref(null);
+let popper = ref(null);
+let arrow = ref(null);
+let popperInstance = null;
 
 onMounted(() => {
-  updateStyles();
-  window.addEventListener('resize', updateStyles);
+  popperInstance = createPopper(button.value, popper.value, {
+    placement: 'bottom',
+    modifiers: [
+      {
+        name: 'arrow',
+        options: {
+          element: arrow.value,
+        },
+      },
+    ],
+  });
 });
 
 onUnmounted(() => {
-  window.removeEventListener('resize', updateStyles);
-});
-
-watch(currentStepIndex, () => {
-  currentStep.value = guideData[currentStepIndex.value];
-  updateStyles();
-});
-
-function updateStyles() {
-  const element = document.querySelector(currentStep.value.domElement);
-  if (element) {
-    const rect = element.getBoundingClientRect();
-    maskStyle.value = {
-      position: 'fixed',
-      top: '0',
-      left: '0',
-      width: '100%',
-      height: '100%',
-      borderColor: 'rgba(0, 0, 0, 0.8)',
-      borderStyle: 'solid',
-      borderWidth: `${rect.top}px ${window.innerWidth - rect.right}px ${window.innerHeight - rect.bottom}px ${rect.left}px`,
-      boxSizing: 'border-box'
-    };
-    bubbleStyle.value = {
-      left: rect.left,
-      top: rect.bottom,
-      boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)'
-    };
-    console.log(bubbleStyle.value)
+  if (popperInstance) {
+    popperInstance.destroy();
+    popperInstance = null;
   }
-}
-
-function handleAction(action) {
-  switch (action) {
-    case 'next':
-      if (currentStepIndex.value < guideData.length - 1) {
-        currentStepIndex.value++;
-      }
-      break;
-    case 'back':
-      if (currentStepIndex.value > 0) {
-        currentStepIndex.value--;
-      }
-      break;
-    case 'complete':
-      currentStep.value = null;
-      break;
-  }
-}
+});
 </script>
 
 <style scoped>
-.mask {
-  pointer-events: none;
+.toggle-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #007BFF;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.3s ease;
+}
+
+.toggle-button:hover {
+  background-color: #0056b3;
+}
+
+.popper-content {
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  width: 200px;
+  z-index: 100;
+  position: relative;
+}
+
+.popper-arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #fff;
+  bottom: -10px;
+  left: calc(50% - 10px);
 }
 </style>

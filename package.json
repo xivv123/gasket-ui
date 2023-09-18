@@ -5,6 +5,9 @@
   "author": "yanxi",
   "license": "ISC",
   "devDependencies": {
-    "turbo": "^1.7.3"
+    "turbo": "^1.7.3",
+    "@types/gulp": "^4.0.9",
+    "consola": "^2.15.3",
+    "chalk": "^5.0.1"
   }
 }

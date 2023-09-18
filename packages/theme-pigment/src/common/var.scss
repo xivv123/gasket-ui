@@ -1,0 +1,12 @@
+
+@use 'sass:math';
+@use 'sass:map';
+
+// popper
+$popper: () !default;
+$popper: map.merge(
+  (
+    'border-radius': var(#{getCssVarName('popover-border-radius')}, 4px),
+  ),
+  $popper
+);

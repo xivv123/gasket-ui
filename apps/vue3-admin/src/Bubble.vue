@@ -137,17 +137,6 @@ onUnmounted(() => {
   z-index: -1;
 }
 
-// .popper-arrow::before {
-//   position: absolute;
-//   width: 10px;
-//   height: 10px;
-//   z-index: -1;
-//   content: ' ';
-//   transform: rotate(45deg);
-//   background: var(--text-color-primary);
-//   box-sizing: border-box;
-// }
-
 .popper[data-popper-placement^='top'] > .popper-arrow {
   bottom: -5px;
 }

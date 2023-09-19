@@ -11,16 +11,16 @@
   },
   "devDependencies": {
     "@iconify-json/ic": "1.1.4",
-    "typescript": "^4.9.4",
+    "typescript": "^4.9.5",
     "unocss": "0.45.6",
-    "vite": "^4.0.4"
+    "vite": "^4.4.9"
   },
   "dependencies": {
-    "@vitejs/plugin-vue": "^4.0.0",
-    "gasket-ui-components": "^1.0.0",
-    "esbuild": "^0.19.2",
-    "sass": "^1.58.0",
-    "vite-plugin-dts": "^1.7.2",
-    "vue": "^3.2.45"
+    "@vitejs/plugin-vue": "^4.3.4",
+    "esbuild": "^0.19.3",
+    "gasket-ui-components": "workspace:^",
+    "sass": "^1.67.0",
+    "vite-plugin-dts": "^1.7.3",
+    "vue": "^3.3.4"
   }
 }

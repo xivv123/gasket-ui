@@ -11,16 +11,17 @@
   "author": "yanxi",
   "license": "ISC",
   "dependencies": {
-    "sass": "^1.58.0",
-    "vue": "^3.2.45",
-    "gulp": "^4.0.2"
+    "gulp": "^4.0.2",
+    "sass": "^1.67.0",
+    "vue": "^3.3.4"
   },
   "devDependencies": {
-    "@esbuild-kit/cjs-loader": "^2.2.1",
+    "@gasket-ui/build": "workspace:*",
+    "@esbuild-kit/cjs-loader": "^2.4.4",
     "@types/gulp-autoprefixer": "^0.0.33",
-    "@types/gulp-clean-css": "^4.3.0",
-    "@types/gulp-rename": "^2.0.1",
-    "@types/gulp-sass": "^5.0.0",
+    "@types/gulp-clean-css": "^4.3.1",
+    "@types/gulp-rename": "^2.0.2",
+    "@types/gulp-sass": "^5.0.1",
     "gulp-autoprefixer": "^8.0.0",
     "gulp-clean-css": "^4.3.0",
     "gulp-rename": "^2.0.0",

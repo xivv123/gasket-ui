@@ -4,10 +4,19 @@
   "keywords": [],
   "author": "yanxi",
   "license": "ISC",
+  "workspaces": [
+    "packages/*",
+    "docs"
+  ],
   "devDependencies": {
-    "turbo": "^1.7.3",
-    "@types/gulp": "^4.0.9",
+    "@types/gulp": "^4.0.13",
+    "chalk": "^5.3.0",
     "consola": "^2.15.3",
-    "chalk": "^5.0.1"
+    "turbo": "^1.10.14",
+    "@gasket-ui/build": "workspace:^0.0.1",
+    "@gasket-ui/build-utils": "workspace:^0.0.1",
+    "@gasket-ui/eslint-config": "workspace:*"
+  },
+  "dependencies": {
   }
 }

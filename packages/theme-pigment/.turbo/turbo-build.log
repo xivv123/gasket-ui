@@ -1,0 +1,32 @@
+
+> @gasket-ui/theme-pigment@1.0.0 build C:\Users\55397\Desktop\gasket\gasket-ui\packages\theme-pigment
+> gulp --require @esbuild-kit/cjs-loader
+
+[[90m17:14:30[39m] Requiring external module @esbuild-kit/cjs-loader
+Error: Cannot find module '@gasket-ui/build-utils'
+Require stack:
+- C:\Users\55397\Desktop\gasket\gasket-ui\packages\theme-pigment\gulpfile.ts
+- C:\Users\55397\Desktop\gasket\gasket-ui\node_modules\.pnpm\gulp-cli@2.3.0\node_modules\gulp-cli\lib\shared\require-or-import.js
+- C:\Users\55397\Desktop\gasket\gasket-ui\node_modules\.pnpm\gulp-cli@2.3.0\node_modules\gulp-cli\lib\versioned\^4.0.0\index.js
+- C:\Users\55397\Desktop\gasket\gasket-ui\node_modules\.pnpm\gulp-cli@2.3.0\node_modules\gulp-cli\index.js
+- C:\Users\55397\Desktop\gasket\gasket-ui\node_modules\.pnpm\gulp@4.0.2\node_modules\gulp\bin\gulp.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1077:15)
+    at u.default._resolveFilename (C:\Users\55397\Desktop\gasket\gasket-ui\node_modules\.pnpm\@esbuild-kit+cjs-loader@2.4.4\node_modules\@esbuild-kit\cjs-loader\dist\index.cjs:1:1625)
+    at Module._load (node:internal/modules/cjs/loader:922:27)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:121:18)
+    at path (c:\Users\55397\Desktop\gasket\gasket-ui\packages\theme-pigment\gulpfile.ts:10:26)
+    at Object.<anonymous> (c:\Users\55397\Desktop\gasket\gasket-ui\packages\theme-pigment\gulpfile.ts:88:16)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Object.N (C:\Users\55397\Desktop\gasket\gasket-ui\node_modules\.pnpm\@esbuild-kit+cjs-loader@2.4.4\node_modules\@esbuild-kit\cjs-loader\dist\index.cjs:1:1077)
+    at Module.load (node:internal/modules/cjs/loader:1119:32) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'C:\\Users\\55397\\Desktop\\gasket\\gasket-ui\\packages\\theme-pigment\\gulpfile.ts',
+    'C:\\Users\\55397\\Desktop\\gasket\\gasket-ui\\node_modules\\.pnpm\\gulp-cli@2.3.0\\node_modules\\gulp-cli\\lib\\shared\\require-or-import.js',
+    'C:\\Users\\55397\\Desktop\\gasket\\gasket-ui\\node_modules\\.pnpm\\gulp-cli@2.3.0\\node_modules\\gulp-cli\\lib\\versioned\\^4.0.0\\index.js',
+    'C:\\Users\\55397\\Desktop\\gasket\\gasket-ui\\node_modules\\.pnpm\\gulp-cli@2.3.0\\node_modules\\gulp-cli\\index.js',
+    'C:\\Users\\55397\\Desktop\\gasket\\gasket-ui\\node_modules\\.pnpm\\gulp@4.0.2\\node_modules\\gulp\\bin\\gulp.js'
+  ]
+}
+ ELIFECYCLE  Command failed with exit code 1.

@@ -12,10 +12,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "gasket-ui": "workspace:^1.0.0",
+    "gasket-ui": "workspace:^",
     "vitepress": "1.0.0-alpha.45",
-    "vitepress-theme-demoblock": "^2.0.1",
-    "vue": "^3.2.45"
+    "vitepress-theme-demoblock": "^2.0.2",
+    "vue": "^3.3.4"
   },
   "devDependencies": {
     "@iconify-json/ic": "1.1.4",

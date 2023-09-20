@@ -15,8 +15,16 @@
     "turbo": "^1.10.14",
     "@gasket-ui/build": "workspace:^0.0.1",
     "@gasket-ui/build-utils": "workspace:^0.0.1",
-    "@gasket-ui/eslint-config": "workspace:*"
+    "@gasket-ui/eslint-config": "workspace:*",
+    "fast-glob": "^3.2.11",
+    "@vitejs/plugin-vue-jsx": "^1.3.10",
+    "unplugin-vue-macros": "^0.11.2"
   },
   "dependencies": {
+    "@types/lodash": "^4.14.182",
+    "@types/lodash-es": "^4.17.6",
+    "lodash": "^4.17.21",
+    "lodash-es": "^4.17.21",
+    "lodash-unified": "^1.0.2"
   }
 }

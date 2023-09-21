@@ -16,3 +16,7 @@ turbo build
 ```
 pnpm -F docs  docs:dev
 ```
+如果提示没有权限，就复制这一段到PowerShell 中执行
+```
+Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+```

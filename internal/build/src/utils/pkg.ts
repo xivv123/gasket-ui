@@ -8,7 +8,7 @@ export const pathRewriter = (module: Module) => {
   const config = buildConfig[module]
 
   return (id: string) => {
-    id = id.replaceAll(`${PKG_PREFIX}/theme-chalk`, `${PKG_NAME}/theme-chalk`)
+    id = id.replaceAll(`${PKG_PREFIX}/theme-pigment`, `${PKG_NAME}/theme-pigment`)
     id = id.replaceAll(`${PKG_PREFIX}/`, `${config.bundle.path}/`)
     return id
   }

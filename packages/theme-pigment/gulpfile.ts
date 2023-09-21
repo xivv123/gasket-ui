@@ -10,10 +10,10 @@ import consola from 'consola'
 import { epOutput } from '@gasket-ui/build-utils'
 
 const distFolder = path.resolve(__dirname, 'dist')
-const distBundle = path.resolve(epOutput, 'theme-chalk')
+const distBundle = path.resolve(epOutput, 'theme-pigment')
 
 /**
- * compile theme-chalk scss & minify
+ * compile theme-pigment scss & minify
  * not use sass.sync().on('error', sass.logError) to throw exception
  * @returns
  */
@@ -64,7 +64,7 @@ function buildDarkCssVars() {
 }
 
 /**
- * copy from packages/theme-chalk/dist to dist/gasket-ui/theme-chalk
+ * copy from packages/theme-pigment/dist to dist/gasket-ui/theme-pigment
  */
 export function copyThemeChalkBundle() {
   return src(`${distFolder}/**`).pipe(dest(distBundle))

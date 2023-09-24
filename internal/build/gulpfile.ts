@@ -59,8 +59,7 @@ export default series(
       copyFullStyle
     )
   ),
-
   parallel(copyTypesDefinitions, copyFiles)
-)
+) as TaskFunction
 
 export * from './src'

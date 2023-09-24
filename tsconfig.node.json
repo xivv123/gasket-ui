@@ -11,8 +11,8 @@
     "internal/**/*.json",
     "scripts/**/*",
     "packages/theme-pigment/*",
-    "packages/ui/version.ts",
-    "packages/ui/package.json"
+    "packages/gasket-ui/version.ts",
+    "packages/gasket-ui/package.json"
   ],
   "exclude": ["**/__tests__/**", "**/tests/**", "**/dist"]
 }

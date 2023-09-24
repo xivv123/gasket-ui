@@ -15,7 +15,7 @@ import {
   PKG_CAMELCASE_NAME,
 } from '@gasket-ui/build-constants'
 import { epOutput, epRoot, localeRoot } from '@gasket-ui/build-utils'
-import { version } from '../../../../packages/ui/version'
+import { version } from '../../../../packages/gasket-ui/version'
 import { ElementPlusAlias } from '../plugins/gasket-ui-alias'
 import {
   formatBundleFilename,

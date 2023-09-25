@@ -43,6 +43,7 @@ export const copyFullStyle = async () => {
   )
 }
 
+// 执行打包
 export default series(
   withTaskName('clean', () => run('pnpm run clean')),
   withTaskName('createOutput', () => mkdir(epOutput, { recursive: true })),
@@ -60,6 +61,6 @@ export default series(
     )
   ),
   parallel(copyTypesDefinitions, copyFiles)
-) as TaskFunction
+)
 
 export * from './src'

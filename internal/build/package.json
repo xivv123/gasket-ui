@@ -2,7 +2,7 @@
   "name": "@gasket-ui/build",
   "version": "0.0.1",
   "private": true,
-  "description": "Build Toolchain for Element Plus",
+  "description": "Build Toolchain for gasket ui",
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",

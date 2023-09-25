@@ -1,0 +1,9 @@
+
+> @gasket-ui/build-constants@0.0.1 build D:\333\gasket-ui\internal\build-constants
+> unbuild
+
+i Building @gasket-ui/build-constants
+√ Build succeed for @gasket-ui/build-constants
+  dist/index.cjs (size: 3.04 kB, exports: PKG_BRAND_NAME, PKG_CAMELCASE_LOCAL_NAME, PKG_CAMELCASE_NAME, PKG_NAME, PKG_PREFIX, REPO_BRANCH, REPO_NAME, REPO_OWNER, REPO_PATH)
+  dist/index.mjs (size: 1.92 kB, exports: PKG_BRAND_NAME, PKG_CAMELCASE_LOCAL_NAME, PKG_CAMELCASE_NAME, PKG_NAME, PKG_PREFIX, REPO_BRANCH, REPO_NAME, REPO_OWNER, REPO_PATH)
+

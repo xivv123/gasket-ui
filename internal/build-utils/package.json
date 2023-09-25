@@ -2,7 +2,7 @@
   "name": "@gasket-ui/build-utils",
   "version": "0.0.1",
   "private": true,
-  "description": "Build utils for Element Plus",
+  "description": "Build utils for Gasket UI",
   "keywords": [
     "gasket-ui"
   ],

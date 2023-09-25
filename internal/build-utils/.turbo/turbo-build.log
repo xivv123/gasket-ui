@@ -1,0 +1,30 @@
+
+> @gasket-ui/build-utils@0.0.1 build D:\333\gasket-ui\internal\build-utils
+> unbuild
+
+i Building @gasket-ui/build-utils
+src/pkg.ts(1,35): error TS2792: Cannot find module '@pnpm/find-workspace-packages'. Did you mean to set the 'moduleResolution' option to 'node', or to add aliases to the 'paths' option?
+src/pkg.ts(4,38): error TS2792: Cannot find module '@pnpm/types'. Did you mean to set the 'moduleResolution' option to 'node', or to add aliases to the 'paths' option?
+
+Error building D:/333/gasket-ui/internal/build-utils: Error: Failed to compile. Check the logs above.
+Error: Failed to compile. Check the logs above.
+    at error (file:///D:/333/gasket-ui/node_modules/.pnpm/rollup@2.79.1/node_modules/rollup/dist/es/shared/rollup.js:1858:30)
+    at throwPluginError (file:///D:/333/gasket-ui/node_modules/.pnpm/rollup@2.79.1/node_modules/rollup/dist/es/shared/rollup.js:21587:12)
+    at Object.error (file:///D:/333/gasket-ui/node_modules/.pnpm/rollup@2.79.1/node_modules/rollup/dist/es/shared/rollup.js:22541:20)
+    at Object.error (file:///D:/333/gasket-ui/node_modules/.pnpm/rollup@2.79.1/node_modules/rollup/dist/es/shared/rollup.js:21764:42)
+    at Object.transform (file:///D:/333/gasket-ui/node_modules/.pnpm/rollup-plugin-dts@4.2.3_rollup@2.79.1_typescript@4.9.5/node_modules/rollup-plugin-dts/dist/rollup-plugin-dts.mjs:1616:26)
+    at file:///D:/333/gasket-ui/node_modules/.pnpm/rollup@2.79.1/node_modules/rollup/dist/es/shared/rollup.js:22748:40
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  id: 'D:\\333\\gasket-ui\\internal\\build-utils\\src\\pkg.ts',
+  hook: 'transform',
+  code: 'PLUGIN_ERROR',
+  plugin: 'dts',
+  watchFiles: [
+    'D:\\333\\gasket-ui\\internal\\build-utils\\src\\index.ts',
+    'D:\\333\\gasket-ui\\internal\\build-utils\\src\\fs.ts',
+    'D:\\333\\gasket-ui\\internal\\build-utils\\src\\pkg.ts',
+    'D:\\333\\gasket-ui\\internal\\build-utils\\src\\paths.ts',
+    'D:\\333\\gasket-ui\\internal\\build-utils\\src\\log.ts'
+  ]
+}
+ ELIFECYCLE  Command failed with exit code 1.

@@ -9,7 +9,7 @@
 
 <!-- 气泡组件 -->
 <script setup lang="ts">
-import { defineProps, computed, ref, watch } from 'vue';
+import { computed } from 'vue';
 
 interface Position {
   x: number;

@@ -9,11 +9,11 @@ import type { Plugin } from 'vue'
 
 // 导出组件库组件
 export default [
-    ButtonInstall, 
-    TagInstall, 
-    BuiDatePickerInstall, 
-    BuiInputInstall, 
-    RightMenuInstall,
-    GkSvgDefsFaultInstall,
-    TableInstall
+    // ButtonInstall, 
+    // TagInstall, 
+    // BuiDatePickerInstall, 
+    // BuiInputInstall, 
+    // RightMenuInstall,
+    // GkSvgDefsFaultInstall,
+    // TableInstall
 ] as Plugin[]

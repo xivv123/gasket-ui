@@ -37,6 +37,7 @@
     "jsdom": "16.4.0",
     "rimraf": "^3.0.2",
     "unplugin-vue-macros": "^0.11.2",
+    "resize-observer-polyfill": "^1.5.1",
     "vue": "^3.2.37",
     "vue-router": "^4.0.16",
     "vue-tsc": "^0.38.2",
